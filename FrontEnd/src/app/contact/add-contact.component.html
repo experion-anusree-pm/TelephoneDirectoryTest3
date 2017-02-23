@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-6">
+      <div class="page-header">
+        <h1>Create New Contact</h1>
+      </div>
+      <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+        <div class="form-group">
+          <label for="formGroupExampleInput">First Name</label>
+          <input type="text" class="form-control" placeholder="Enter First Name" ngModel name="txtFirstName" required maxlength="50" pattern="[a-zA-Z]+">
+        </div>
+
+        <div class="form-group">
+          <label for="Last Name">Last Name</label>
+          <input type="text" class="form-control" placeholder="Enter Last Name"id="txtLastName" ngModel name="txtLastName" required maxlength="50" pattern="[a-zA-Z]+">
+        </div>
+         <div *ngIf="txtLastName" class="text-danger">
+           Only Characters are allowed.
+         </div> 
+
+        <div class="form-group">
+          <label for="Phone Number">Phone Number</label>
+          <input type="text" class="form-control" placeholder="Enter Phone Number" (keyup)="onChangeValidate($event.target.value)"
+            ngModel name="txtPhoneNumber" pattern="^(\+91[\-\s]?)?[0]?(91)?\d{10}$">
+            <div *ngIf="validContact" class="text-danger">
+           Number already Exist.
+         </div> 
+
+        </div>
+
+        <div class="form-group">
+          <label for="Address">Address</label>
+          <textarea class="form-control" placeholder="Enter Address" ngModel name="txtAddress"></textarea>
+        </div>
+
+
+        <div class="btn-group" role="group" aria-label="...">
+           <div class="row">
+                 <div class="col-sm-6"><input type="submit"  class="btn btn-primary" value="Create" style="width:225px"></div>
+                  <div class="col-sm-6"><input type="reset" class="btn btn-primary" value="cancel" style="width:225px"></div>
+           </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

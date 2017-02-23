@@ -1,0 +1,28 @@
+
+<h1>Welcome To<i> e-TeleDirectory</i></h1>
+
+<form [routerLink]="['./']">
+  <div class="imgcontainer">
+    <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="Container" align="Center">
+      <div class="form-group form-horizontal" >
+        <label for="UserName">User Name</label>
+        <input type="text" align="Center" class="form-control" placeholder="Enter User Name" ngModel name="txtUserName" required
+          maxlength="50" pattern="[a-zA-Z]+">
+      </div>
+
+      <div class="form-group" >
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" placeholder="Enter Password" id="txtPassword" ngModel name="txtPassword" required
+          maxlength="20">
+           <div *ngIf="validUser" class="text-danger">
+          Invalid username or Password.
+         </div> 
+      </div>
+      <button type="submit">Login</button>
+    </div>
+  </form>
+ 

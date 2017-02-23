@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-6">
+      <div class="page-header">
+        <h2>Edit Directory</h2>
+      </div>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+        <div class="form-group">
+          <label for="Directory Name">Directory Name</label>
+          <input type="text" class="form-control" placeholder="Enter Directory Name" [ngModel]="directoryName" name="txtDirectoryName">
+        </div>
+          <div *ngIf="validDirectory" class="text-danger">
+          Directory name already Exists.
+         </div>
+
+        <div class="btn-group" role="group" aria-label="...">
+          <div class="row">
+            <div class="col-sm-6"><input type="submit" [disabled]="f.invalid" class="btn btn-primary" value="Submit" style="width:225px"></div>
+            <div class="col-sm-6"><input type="reset" class="btn btn-primary" value="cancel" style="width:225px"></div>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</div>

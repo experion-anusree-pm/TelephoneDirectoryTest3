@@ -1,0 +1,59 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-brand brand-decoration" >e-Tele Directory </div>
+    </div>
+    <ul class="nav navbar-nav">
+    
+      <li class="active" [routerLink]="['./']"><a>Home</a></li>
+      <li  [routerLink]="['AddDirectory']"><a>Create Directory</a></li>
+       <li  (click)="logOut()"><a>Logout</a></li>
+
+    </ul>
+    <form class="navbar-form navbar-left">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" (keyup)="onKey($event)" style="width:700px;margin-bottom:0px">
+      </div>
+    </form>
+  </div>
+</nav>
+<div class="row container">
+  <div class=" col-sm-6 ">
+    
+    <!--List View component-->
+   <div *ngIf="!keyPress">
+  <app-directory-list></app-directory-list>
+  </div>
+   
+  <div *ngIf="keyPress">
+   
+   <div class="container">
+  <h2>Search Results</h2>         
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Address</th>
+         <th>Directory Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let items of searchList;">
+        <td>{{items.FirstName}} {{items.LastName}}</td>
+        <td>{{items.PhoneNumber}}</td>
+        <td>{{items.Address}}</td>
+        <td>{{items.Name}}</td>
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
+  </div>
+
+   </div>
+  <div class="col-sm-6">
+   <router-outlet></router-outlet>
+   
+  </div>
+</div>

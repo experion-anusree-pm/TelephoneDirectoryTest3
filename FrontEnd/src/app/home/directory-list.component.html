@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="col-sm-6">
+    <div class="row"> <b>Directories</b></div>
+    <br> <br>
+    
+    <!-- *ngFor="let contactGet of contactPullObject | serach:searchKeyGet;  let i=index" >-->
+    <div *ngFor="let directory of directoryList; ">
+      <div class="row">
+        <hr>
+        <div class="col-offset-1 col-sm-2">
+          <a (click)="ContactDisplay(directory.Id)">{{directory?.Name}}</a>
+        </div>
+        <div class="col-sm-3 ">
+          <a type="button" class="btn btn-success" [routerLink]="['EditDirectory',directory.Id] ">Edit Name</a>
+        </div>
+        <div class="col-sm-3">
+          <a type="button" class="btn btn-success" [routerLink]="['AddContact',directory.Id]">Create Contact</a>
+        </div>
+      </div>
+      <!--Contact View-->
+      <div class="container" *ngIf="id == directory.Id && contacts">
+        <div class="row" *ngFor="let contact of ContactList; "><br>
+          <a [routerLink]="['ViewContact',contact.Id]">
+            <div class="col-offset-2 col-sm-2">{{contact.FirstName}} {{contact.LastName}}
+            </div>
+            <div class="col-sm-2">{{contact.PhoneNumber}}
+            </div>
+          </a>
+          <div class="col-offset-1 col-sm-3 ">
+            <a type="button" class="button" [routerLink]="['EditContact',contact.Id]">Edit</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <router-outlet></router-outlet>
+  </div>
